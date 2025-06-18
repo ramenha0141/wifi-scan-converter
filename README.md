@@ -11,7 +11,7 @@ macOSのワイヤレス診断を使用して生成されたレポートを `bssi
 任意の [Node.js](https://nodejs.org/ja) 環境で以下のコマンドを実行すると現在のワーキングディレクトリにCSVファイルが出力されます：
 
 ```sh
-$ node ./main.js
+node ./main.js
 ```
 
 > [!NOTE]
