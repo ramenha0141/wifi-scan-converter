@@ -21,7 +21,6 @@ for (const path of paths) {
         try {
             writeFileSync(tempTarFile, decompressedData);
 
-            // tar を同期的に展開
             extract({
                 sync: true,
                 file: tempTarFile,
@@ -29,7 +28,6 @@ for (const path of paths) {
                 filter: (path) => path.endsWith('wifi_scan.txt')
             });
 
-            // wifi_scan.txt を探して読み取り
             const extractedFiles = globSync(join(tempDir, '**/wifi_scan.txt'));
 
             if (extractedFiles.length > 0) {
@@ -66,10 +64,8 @@ for (const path of paths) {
                 console.log('wifi_scan.txt が見つかりませんでした');
             }
         } finally {
-            // 一時ファイルを削除
             try {
                 unlinkSync(tempTarFile);
-                // 展開されたファイルも削除
                 const allFiles = globSync(join(tempDir, '**/*'));
                 for (const file of allFiles) {
                     try {
